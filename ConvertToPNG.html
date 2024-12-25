@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process File and Download</title>
+</head>
+<body>
+    <h1>Process File and Download as .png</h1>
+    <input type="file" id="fileInput" />
+    <button id="processButton">Process File</button>
+
+    <script>
+        document.getElementById("processButton").addEventListener("click", () => {
+            const fileInput = document.getElementById("fileInput");
+
+            if (!fileInput.files.length) {
+                alert("Please select a file first.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const fileBytes = new Uint8Array(event.target.result);
+
+                if (fileBytes.length <= 300) {
+                    alert("File is smaller than 300 bytes, cannot process.");
+                    return;
+                }
+
+                const trimmedBytes = fileBytes.slice(300);
+
+                const blob = new Blob([trimmedBytes], { type: "image/png" }); 
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+
+                link.download = `${file.name.split('.')[0]}_processed.png`;
+                link.click();
+            };
+
+            reader.readAsArrayBuffer(file); 
+        });
+    </script>
+</body>
+</html>
