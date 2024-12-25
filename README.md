@@ -4,7 +4,7 @@ Welcome to the RDR2_Photo_Converter! 🎮📸 This little tool will help you con
 **How It Works:**
 1. Simple, clean code that’s easy to understand and use.
 2. All you need is a browser, no installation required. 🖥️🚀
-3.Just download the HTML file, open it in your browser, and you're good to go! 🎉
+3. Just download the HTML file, open it in your browser, and you're good to go! 🎉
 
 **Instructions:**
 1. Download the HTML file.
